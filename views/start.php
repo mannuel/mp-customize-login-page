@@ -13,6 +13,11 @@
 			</div>
 
 			<div>
+				<label>Login image height</label>
+				<input type="text" name="mpclp-login-image-height" id="mpclp-login-image-height" value="<?php echo get_option( 'mpclp_login_image_height' ); ?>" placeholder="100px">
+			</div>
+
+			<div>
 				<label>Background</label>
 				<input type="text" name="mpclp-login-background" value="<?php echo get_option( 'mpclp_login_background' ); ?>" id="mpclp-login-background">
 				<input type="color" name="mpclp-login-background-selector" value="<?php echo get_option( 'mpclp_login_background' ); ?>" id="mpclp-login-background-selector">

@@ -74,6 +74,7 @@ class mpclp {
 		if ( !wp_verify_nonce( $_POST['_wpnonce'], self::NONCE ) )
 			return false;
 		update_option( 'mpclp_login_image', $_POST['mpclp-login-image'] );
+		update_option( 'mpclp_login_image_height', $_POST['mpclp-login-image-height'] );
 		update_option( 'mpclp_login_background', $_POST['mpclp-login-background'] );
 		update_option( 'mpclp_login_form_background', $_POST['mpclp-login-form-background'] );
 		update_option( 'mpclp_login_form_label', $_POST['mpclp-login-form-label'] );
@@ -98,6 +99,9 @@ class mpclp {
 			body{background: <?php echo get_option( 'mpclp_login_background' ); ?>}
 			<?php if( get_option( 'mpclp_login_image' ) ) { ?>
 				.login h1 a{ background-image: none,url(<?php echo get_option( 'mpclp_login_image' ); ?>); background-repeat: no-repeat; background-size: contain; width: 100%}
+			<?php } ?>
+			<?php if( get_option( 'mpclp_login_image_height' ) ) { ?>
+				.login h1 a{ height: <?php echo get_option( 'mpclp_login_image_height' ); ?> }
 			<?php } ?>
 			.login form{background: <?php echo get_option( 'mpclp_login_form_background' ); ?>}
 			.login label{color: <?php echo get_option( 'mpclp_login_form_label' ); ?>}
