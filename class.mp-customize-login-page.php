@@ -30,6 +30,7 @@ class mpclp {
 		add_action( 'admin_menu', array( 'mpclp', 'mpclp_settings_menu' ) );
 		add_action( 'login_form', array( 'mpclp', 'mpclp_login_image_form' ) );
 		add_action( 'admin_enqueue_scripts', array( 'mpclp', 'mpclp_admin_scripts' ) );
+		add_filter( 'login_message', array( 'mpclp', 'mpclp_add_login_message' ) );
 	}
 
 	/**
@@ -73,11 +74,13 @@ class mpclp {
 	public static function enter_mpclp_login_options() {
 		if ( !wp_verify_nonce( $_POST['_wpnonce'], self::NONCE ) )
 			return false;
+
 		update_option( 'mpclp_login_image', $_POST['mpclp-login-image'] );
 		update_option( 'mpclp_login_image_height', $_POST['mpclp-login-image-height'] );
 		update_option( 'mpclp_login_background', $_POST['mpclp-login-background'] );
 		update_option( 'mpclp_login_form_background', $_POST['mpclp-login-form-background'] );
 		update_option( 'mpclp_login_form_label', $_POST['mpclp-login-form-label'] );
+		update_option( 'mpclp_login_message', $_POST['mpclp-login-message'] );
 		return true;
 	}
 
@@ -107,4 +110,13 @@ class mpclp {
 			.login label{color: <?php echo get_option( 'mpclp_login_form_label' ); ?>}
 		</style>
 	<?php }
+
+	/**
+	 * Add login message
+	 */
+	public static function mpclp_add_login_message() {
+		if ( get_option( 'mpclp_login_message' ) ) {
+			return '<p class="message">' . get_option( 'mpclp_login_message' ) . '</p>';
+		}
+	}
 } // class mpclp end

@@ -36,6 +36,11 @@
 			</div>
 
 			<div>
+				<label>Message</label>
+				<textarea name="mpclp-login-message" id="mpclp-login-message"><?php echo get_option( 'mpclp_login_message' ); ?></textarea>
+			</div>
+
+			<div>
 				<input type="submit" name="submit" id="submit" class="button button-primary button-large mpclp-button" value="<?php _e( 'Save', 'mp_clp' );?>">
 			</div>
 		</form>
