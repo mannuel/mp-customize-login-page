@@ -8,10 +8,6 @@
 							<div class="col m12 center-align">
 								<h1 class="white-text"><?php esc_html_e( 'MP Customize Login Page', 'mp_clp' ); ?></h1>
 							</div>
-
-<!-- 							<div class="col m4 right-align">
-								<img src="<?php echo MPCLP__PLUGIN_DIR_URL .'assets/img/mannuel.svg' ?>" alt="Manuel Padilla">
-							</div> -->
 						</div>
 					</div>
 				</nav>
@@ -25,7 +21,6 @@
 							<span class="card-title">Login page</span>
 								<div class="row">
 									<div class="col s12 m6">
-										<!-- <label>Login image</label> -->
 										<input type="button" class="waves-effect waves-light btn" value="<?php _e( 'Set login image', 'mp_clp' ); ?>" id="upload-login-image-button">
 										<input type="hidden" name="mpclp-login-image" id="mpclp-login-image" value="<?php echo get_option( 'mpclp_login_image' ); ?>">
 									</div>
