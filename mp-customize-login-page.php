@@ -29,6 +29,8 @@ defined( 'ABSPATH' ) or exit;
 
 define( 'MPCLP__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
+define( 'MPCLP__PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
+
 require_once( MPCLP__PLUGIN_DIR . 'class.mp-customize-login-page.php' );
 
 add_action( 'init', array( 'mpclp', 'init' ) );

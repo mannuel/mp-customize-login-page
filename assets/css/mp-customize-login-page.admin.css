@@ -2,6 +2,21 @@
  * plugdigital.net
  */
 
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+.mpclp-content{font-family: 'Roboto Condensed', sans-serif}
+
 #login-image-current{ background-repeat: no-repeat; background-size: contain; height: 150px; margin-bottom: 1.5em; width: 100% }
+#wpfooter{display: none}
+
+label{font-size: 1rem}
+
+nav.main{height: inherit; padding: 1rem 0}
+nav.main .row {width: 90%; margin: 0 auto}
+nav.main img{width: 25%}
 
 .button-danger{ background-color: #d9534f !important; border-color: #d43f3a !important; color: #fff !important}
+.about-plugin li{ font-size: 1.4em }
+.card{max-width: 100%}
+
+.card .card-content .card-title{margin-bottom: 1em}
