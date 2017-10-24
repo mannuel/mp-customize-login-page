@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: MP Customize login Page
+ * Plugin Name: MP Customize Login Page
  * Description: Customize your wp-login page
  * Plugin URI: https://www.plugdigital.com/wp-plugins/mp-customize-login-page
  * Author: Manuel Padilla

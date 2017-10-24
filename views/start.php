@@ -111,7 +111,7 @@
 						</div>
 						<span class="card-title"><?php _e( 'About this plugin', 'mp_clp' );?></span>
 						<ul>
-							<li><?php _e( 'Name' );?>: MP Customize login Page</li>
+							<li><?php _e( 'Name' );?>: MP Customize Login Page</li>
 							<li><?php _e( 'Developer' );?>: Manuel Padilla</li>
 						</ul>
 					</div>
