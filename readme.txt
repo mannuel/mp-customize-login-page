@@ -40,6 +40,7 @@ Developed by [Manuel Padilla](https://www.plugdigital.com/manuel-padilla)
 2. Search for ‘MP Customize Login Page’
 3. Click ‘Install Now’
 4. Activate the plugin on the Plugin dashboard
+5. Go to Settings > MP Customize Login Page
 
 = Uploading in WordPress Dashboard =
 
@@ -48,12 +49,14 @@ Developed by [Manuel Padilla](https://www.plugdigital.com/manuel-padilla)
 3. Select mp-customize-login-page.zip from your computer
 4. Click ‘Install Now’
 5. Activate the plugin in the Plugin dashboard
+6. Go to Settings > MP Customize Login Page
 
 = Using FTP =
 1. Download mp-customize-login-page.zip
 2. Extract the mp-customize-login-page directory to your computer
 3. Upload the mp-customize-login-page directory to the /wp-content/plugins/ directory
 4. Activate the plugin in the Plugin’s dashboard
+5. Go to Settings > MP Customize Login Page
 
 == Screenshots ==
 
