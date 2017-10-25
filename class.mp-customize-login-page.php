@@ -47,15 +47,15 @@ class mpclp {
 			wp_enqueue_style( 'materialize-icons-styles' );
 			wp_register_script( 'materialize-script', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js', array(), '', true );
 			wp_enqueue_script( 'materialize-script' );
+
+			wp_register_style( 'mpclp-admin-styles', plugin_dir_url( __FILE__ ) . 'assets/css/mp-customize-login-page.admin.css', array(), '1.0.0', 'all' );
+			wp_enqueue_style( 'mpclp-admin-styles' );
+
+			wp_enqueue_media();
+
+			wp_register_script( 'mpclp-admin-script', plugin_dir_url( __FILE__ ) . 'assets/js/mp-customize-login-page.admin.js', array('jquery'), '1.0.0', true );
+			wp_enqueue_script( 'mpclp-admin-script' );
 		}
-
-		wp_register_style( 'mpclp-admin-styles', plugin_dir_url( __FILE__ ) . 'assets/css/mp-customize-login-page.admin.css', array(), '1.0.0', 'all' );
-		wp_enqueue_style( 'mpclp-admin-styles' );
-
-		wp_enqueue_media();
-
-		wp_register_script( 'mpclp-admin-script', plugin_dir_url( __FILE__ ) . 'assets/js/mp-customize-login-page.admin.js', array('jquery'), '1.0.0', true );
-		wp_enqueue_script( 'mpclp-admin-script' );
 	}
 
 	/**
