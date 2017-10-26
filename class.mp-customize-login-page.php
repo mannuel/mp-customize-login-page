@@ -40,7 +40,7 @@ class mpclp {
 		/**
 		 * Materialize
 		 */
-		if ($_GET["page"] == "mpclp-settings-menu") {
+		if (isset($_GET["page"]) == "mpclp-settings-menu") {
 			wp_register_style( 'materialize-styles', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css', array(), '', 'all' );
 			wp_enqueue_style( 'materialize-styles' );
 			wp_register_style( 'materialize-icons-styles', 'https://fonts.googleapis.com/icon?family=Material+Icons', array(), '', 'all' );
