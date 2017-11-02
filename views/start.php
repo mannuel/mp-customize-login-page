@@ -1,58 +1,66 @@
-<h1><?php esc_html_e( 'MP Customize Login Page', 'mp_clp' ); ?></h1>
+<div class="wrap">
+	<h1><?php esc_html_e( 'MP Customize Login Page', 'mp_clp' ); ?></h1>
 
-<form action="" method="post" id="mpclp_frm">
-	<?php wp_nonce_field( mpclp::NONCE ) ?>
-	<input type="hidden" name="action" value="enter-mpclp-login-options">
-	
-	<input type="button" value="<?php _e( 'Set login image', 'mp_clp' ); ?>" id="upload-login-image-button">
-	<input type="hidden" name="mpclp-login-image" id="mpclp-login-image" value="<?php echo get_option( 'mpclp_login_image' ); ?>">
+	<div class="row">
+		<div class="col-md-8">
+			<form action="" method="post" id="mpclp_frm">
 
-	<label>Login image height</label>
-	<input type="text" name="mpclp-login-image-height" id="mpclp-login-image-height" value="<?php echo get_option( 'mpclp_login_image_height' ); ?>" placeholder="100px">
+				<?php wp_nonce_field() ?>
+				
+				<?php settings_fields( 'mpclp_options' ); ?>
+				<?php do_settings_sections( 'MP Customize Login Page' ); ?>
 
-	<label>Page background</label>
-	<input type="color" name="mpclp-login-background-selector" value="<?php echo get_option( 'mpclp_login_background' ); ?>" id="mpclp-login-background-selector">
-	<input type="text" name="mpclp-login-background" value="<?php echo get_option( 'mpclp_login_background' ); ?>" id="mpclp-login-background">
+				<hr>
 
+				<?php do_settings_sections( 'MP Customize Form Login Page' ); ?>
 
-	<span class="card-title">Login form</span>
-	<label>Form background color</label>
-	<input type="color" name="mpclp-login-form-background-selector" value="<?php echo get_option( 'mpclp_login_form_background' ); ?>" id="mpclp-login-form-background-selector">
-	<input type="text" name="mpclp-login-form-background" value="<?php echo get_option( 'mpclp_login_form_background' ); ?>" id="mpclp-login-form-background">
+				<input type="submit" value="<?php _e('Save settings', 'mp_clp'); ?>" class="button button-primary" name="submit" />
+				<input type="button" id="reset-options" class="button button-secondary reset_settings" value="<?php _e('Reset settings', 'mp_clp'); ?>">
+			</form>
+		</div> <!-- /.col-md-8 -->
+		<div class="col-md-3">
+			<?php if (get_option( 'mpclp_login_image' )): ?>
+				<div class="mp-card">
+					<div class="mp-card-title">
+						<h3><?php _e( 'Current login image', 'mp_clp' ); ?></h3>
+					</div><!-- /.mp-card-title -->
 
-	<label>Form label color</label>
-	<input type="color" name="mpclp-login-form-label-selector" value="<?php echo get_option( 'mpclp_login_form_label' ); ?>" id="mpclp-login-form-label-selector">
-	<input type="text" name="mpclp-login-form-label" value="<?php echo get_option( 'mpclp_login_form_label' ); ?>" id="mpclp-login-form-label">
+					<div class="mp-card-content">
+						<div id="login-image-current" style="background-image: url(<?php echo get_option( 'mpclp_login_image' ); ?>);"></div>
 
-	<span class="card-title">Message</span>
-	<textarea name="mpclp-login-message" id="mpclp-login-message" class=""><?php echo get_option( 'mpclp_login_message' ); ?></textarea>
+						<form action="" method="post">
+							<?php wp_nonce_field( mpclp::NONCE ) ?>
+							<input type="hidden" name="action" value="delete-mpclp-login-image">
+							<input type="submit" class="button button-link" value="<?php _e( 'Remove image', 'mp_clp' ); ?>" id="delete-login-image-button">
+						</form>
+					</div><!-- /.mp-card-content -->
+				</div><!-- /.mp-card -->
+			<?php endif; ?>
 
-	<input type="submit" name="submit" id="submit" class="" value="<?php _e( 'Save all', 'mp_clp' );?>">
-</form>
+			<div class="mp-card">
+				<div class="mp-card-title">
+					<h3><?php _e( 'About this Plugin', 'mp_clp' );?></h3>
+				</div><!-- /.mp-card-title -->
 
-<?php if (get_option( 'mpclp_login_image' )): ?>
-	<label><?php _e( 'Current login image', 'mp_clp' ); ?></label>
-	<div id="login-image-current" style="background-image: url(<?php echo get_option( 'mpclp_login_image' ); ?>);"></div>
+				<div class="mp-card-content">
+					<div class="text-center">
+						<img src="<?php echo MPCLP__PLUGIN_DIR_URL .'assets/img/mannuel.svg' ?>" alt="Manuel Padilla" style="width: 60%; margin-bottom: 1.5em">
+					</div>
 
-	<form action="" method="post">
-		<?php wp_nonce_field( mpclp::NONCE ) ?>
-		<input type="hidden" name="action" value="delete-mpclp-login-image">
-		<input type="submit" class="waves-effect waves-light btn red darken-4" value="<?php _e( 'Remove', 'mp_clp' ); ?>" id="delete-login-image-button">
-	</form>
-<?php endif; ?>
+					<ul>
+						<li><b><?php _e( 'Name' );?></b>: MP Customize Login Page</li>
+						<li><b><?php _e( 'Developer' );?></b>: Manuel Padilla</li>
+					</ul>
+				</div><!-- /.mp-card-content -->
 
-<div class="">
-	<img src="<?php echo MPCLP__PLUGIN_DIR_URL .'assets/img/mannuel.svg' ?>" alt="Manuel Padilla" style="width: 60%; margin-bottom: 1.5em">
-</div>
+				<div class="mp-card-action">
+					<div class="mp-card-content">
+						<a href="https://goo.gl/BsnMiH" target="_blank" title="MP Customize login Page git repo" class="mp-orange-text">Bitbucket Repo</a>
+						<a href="https://goo.gl/Rd8Gev" target="_blank" title="Manuel Padilla LikedIn" class="mp-orange-text">LinkedIn</a>
+					</div>
+				</div><!-- /.mp-card-action -->
+			</div> <!-- ./mp-card -->
+		</div> <!-- /.col-md-4 -->
+	</div> <!-- /.row -->
 
-<span class="card-title"><?php _e( 'About this plugin', 'mp_clp' );?></span>
-
-<ul>
-	<li><?php _e( 'Name' );?>: MP Customize Login Page</li>
-	<li><?php _e( 'Developer' );?>: Manuel Padilla</li>
-</ul>
-
-<div class="">
-	<a href="https://goo.gl/BsnMiH" target="_blank" title="MP Customize login Page git repo">Bitbucket Repo</a>
-	<a href="https://goo.gl/Rd8Gev" target="_blank" title="Manuel Padilla LikedIn">LinkedIn</a>
-</div>
+</div> <!-- /.wrap -->

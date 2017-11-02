@@ -25,15 +25,14 @@ jQuery(document).ready( function($) {
 		mediaUploader.open();
 	});
 
-	$('#mpclp-login-background-selector').on('change',function(e){
-		$('#mpclp-login-background').val($(this).val());
-	});
+	$('.wpColorPicker').wpColorPicker();
 
-	$('#mpclp-login-form-background-selector').on('change',function(e){
-		$('#mpclp-login-form-background').val($(this).val());
-	});
-
-	$('#mpclp-login-form-label-selector').on('change',function(e){
-		$('#mpclp-login-form-label').val($(this).val());
+	$('#reset-options').on('click',function(e){
+		$('#mpclp-login-image-height').val('');
+		$('#mpclp-login-background').val('');
+		$('#mpclp-login-form-background').val('');
+		$('#mpclp-login-form-label').val('');
+		$('#mpclp-login-message').val('');
+		$('.wp-color-result').removeAttr( 'style' );
 	});
 });
