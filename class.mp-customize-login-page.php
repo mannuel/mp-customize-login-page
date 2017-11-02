@@ -188,7 +188,7 @@ function mpclp_opt_logo_image( ){
 
 function mpclp_opt_login_image_link( ){
 	$mpclp_login_image_link = esc_attr( get_option( 'mpclp_login_image_link' ) );
-	echo '<input type="url" id="mpclp-login-image-link" name="mpclp-login-image-link" value="'.$mpclp_login_image_link.'" placeholder="http://www.mysite.com">';
+	echo '<input type="url" id="mpclp-login-image-link" name="mpclp-login-image-link" value="'.$mpclp_login_image_link.'" placeholder="'.home_url().'">';
 }
 
 function mpclp_opt_login_image_height( ){
