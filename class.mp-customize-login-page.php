@@ -30,6 +30,8 @@ class mpclp {
 		add_action( 'login_form', array( 'mpclp', 'mpclp_login_image_form' ) );
 		add_action( 'admin_enqueue_scripts', array( 'mpclp', 'mpclp_admin_scripts' ) );
 		add_filter( 'login_message', array( 'mpclp', 'mpclp_add_login_message' ) );
+		add_filter( 'login_headerurl', array( 'mpclp', 'mpclp_logo_url' ) );
+		add_filter( 'login_headertitle', array( 'mpclp', 'mpclp_logo_title' ) );
 	}
 
 	/**
@@ -54,7 +56,7 @@ class mpclp {
 	}
 
 	/**
-	 * Show star page
+	 * Show start page
 	 */
 	public static function mpclp_start_page() {
 		mpclp::view('start');
@@ -86,6 +88,7 @@ class mpclp {
 		}
 
 		update_option( 'mpclp_login_image', esc_url_raw($_POST['mpclp-login-image']) );
+		update_option( 'mpclp_login_image_link', esc_url_raw($_POST['mpclp-login-image-link']) );
 		update_option( 'mpclp_login_image_height', sanitize_text_field($_POST['mpclp-login-image-height']) );
 		update_option( 'mpclp_login_background', sanitize_text_field($_POST['mpclp-login-background']) );
 		update_option( 'mpclp_login_form_background', sanitize_text_field($_POST['mpclp-login-form-background']) );
@@ -129,6 +132,24 @@ class mpclp {
 			return '<div class="message">' . html_entity_decode(get_option( 'mpclp_login_message' )). '</div>';
 		}
 	}
+
+	/**
+	 * Logo link
+	 */
+	public static function mpclp_logo_url() {
+		if ( get_option( 'mpclp_login_image_link' ) ) {
+			return get_option( 'mpclp_login_image_link' );
+		} else {
+			return home_url();
+		}
+	}
+
+	/**
+	 * Logo title
+	 */
+	public static function mpclp_logo_title() {
+		return get_bloginfo( 'name' );
+	}
 } // class mpclp end
 
 
@@ -141,6 +162,7 @@ function register_settings() {
 	add_settings_section( 'mpclp_opstions_form_section', 'Form options', 'mpclp_opstions_form_fields', 'MP Customize Form Login Page' );
 
 	add_settings_field( 'mpclp-login-image', 'Logo image', 'mpclp_opt_logo_image', 'MP Customize Login Page', 'mpclp_opstions_section', '' );
+	add_settings_field( 'mpclp-login-image-link', 'Logo link', 'mpclp_opt_login_image_link', 'MP Customize Login Page', 'mpclp_opstions_section', '' );
 	add_settings_field( 'mpclp-login-image-height', 'Login image height', 'mpclp_opt_login_image_height', 'MP Customize Login Page', 'mpclp_opstions_section', '' );
 	add_settings_field( 'mpclp-login-form-background', 'Page background', 'mpclp_opt_page_background', 'MP Customize Login Page', 'mpclp_opstions_section', '' );
 
@@ -158,33 +180,38 @@ function mpclp_opstions_form_fields(){
 	echo "Set styles for your login form";
 }
 
-function mpclp_opt_logo_image(  ){
+function mpclp_opt_logo_image( ){
 	$mpclp_login_image = esc_attr( get_option( 'mpclp_login_image' ) );
 	echo '<input type="hidden" name="mpclp-login-image" id="mpclp-login-image" value="'.$mpclp_login_image.'">';
 	echo '<input type="button" value="Set login image" id="upload-login-image-button" class="button">';
 }
 
-function mpclp_opt_login_image_height(  ){
+function mpclp_opt_login_image_link( ){
+	$mpclp_login_image_link = esc_attr( get_option( 'mpclp_login_image_link' ) );
+	echo '<input type="url" id="mpclp-login-image-link" name="mpclp-login-image-link" value="'.$mpclp_login_image_link.'" placeholder="http://www.mysite.com">';
+}
+
+function mpclp_opt_login_image_height( ){
 	$mpclp_login_image_height = esc_attr( get_option( 'mpclp_login_image_height' ) );
 	echo '<input type="text" id="mpclp-login-image-height" name="mpclp-login-image-height" value="'.$mpclp_login_image_height.'" placeholder="100px">';
 }
 
-function mpclp_opt_page_background(  ){
+function mpclp_opt_page_background( ){
 	$mpclp_login_background = esc_attr( get_option( 'mpclp_login_background' ) );
 	echo '<input type="text" id="mpclp-login-background" class="wpColorPicker" name="mpclp-login-background" value="'.$mpclp_login_background.'" />';
 }
 
-function mpclp_login_form_background(  ){
+function mpclp_login_form_background( ){
 	$mpclp_login_form_background = esc_attr( get_option( 'mpclp_login_form_background' ) );
 	echo '<input type="text" id="mpclp-login-form-background" class="wpColorPicker" name="mpclp-login-form-background" value="'.$mpclp_login_form_background.'">';
 }
 
-function mpclp_login_form_label(  ){
+function mpclp_login_form_label( ){
 	$mpclp_login_form_label = esc_attr( get_option( 'mpclp_login_form_label' ) );
 	echo '<input type="text" class="wpColorPicker" name="mpclp-login-form-label" value="'.$mpclp_login_form_label.'" id="mpclp-login-form-label">';
 }
 
-function mpclp_login_message(  ){
+function mpclp_login_message( ){
 	$mpclp_login_message = html_entity_decode(get_option( 'mpclp_login_message' ));
 	// echo '<textarea name="mpclp-login-message" id="mpclp-login-message" class="">'.$mpclp_login_message.'</textarea>';
 	$settings = array(

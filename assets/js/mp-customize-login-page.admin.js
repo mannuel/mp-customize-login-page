@@ -33,6 +33,7 @@ jQuery(document).ready( function($) {
 		$('#mpclp-login-form-background').val('');
 		$('#mpclp-login-form-label').val('');
 		$('#mpclp-login-message').val('');
+		$('#mpclp-login-image-link').val('');
 		$('.wp-color-result').removeAttr( 'style' );
 	});
 });
