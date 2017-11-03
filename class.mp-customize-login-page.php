@@ -32,6 +32,17 @@ class mpclp {
 		add_filter( 'login_message', array( 'mpclp', 'mpclp_add_login_message' ) );
 		add_filter( 'login_headerurl', array( 'mpclp', 'mpclp_logo_url' ) );
 		add_filter( 'login_headertitle', array( 'mpclp', 'mpclp_logo_title' ) );
+		add_filter( 'plugin_action_links_'.MPCLP__PLUGIN_BASENAME, array( 'mpclp', 'mpclp_plugin_action_links' ));
+	}
+
+	/**
+	 * Add settings link on plugin page
+	 */
+	public static function mpclp_plugin_action_links($links) {
+		$settings_link = '<a href="options-general.php?page=mpclp-settings-menu">Settings</a>';	
+		array_unshift($links, $settings_link); 
+		
+		return $links;
 	}
 
 	/**
@@ -213,7 +224,6 @@ function mpclp_login_form_label( ){
 
 function mpclp_login_message( ){
 	$mpclp_login_message = html_entity_decode(get_option( 'mpclp_login_message' ));
-	// echo '<textarea name="mpclp-login-message" id="mpclp-login-message" class="">'.$mpclp_login_message.'</textarea>';
 	$settings = array(
 		'editor_height' => 70 
 	);
