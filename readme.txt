@@ -1,9 +1,9 @@
 === MP Customize Login Page ===
 Contributors: manuelpadillac
 Plugin Name: MP Customize Login Page
-Plugin URI: https://www.plugdigital.com/wp-plugins/mp-customize-login-page
+Plugin URI: https://www.plugdigital.net/wp-plugins/mp-customize-login-page
 Author: Manuel Padilla
-Author URI: https://www.plugdigital.com/manuel-padilla
+Author URI: https://www.plugdigital.net/manuel-padilla
 Tags: custom login, login customization, login page
 Requires at least: 3.5
 Tested up to: 4.8.2
@@ -30,7 +30,7 @@ Please give us feedback, contribute and file technical bugs on [Bitbucket Repo](
 
 = Credits =
 
-Developed by [Manuel Padilla](https://www.plugdigital.com/manuel-padilla)
+Developed by [Manuel Padilla](https://www.plugdigital.net/manuel-padilla)
 
 == Installation ==
 
@@ -60,6 +60,4 @@ Developed by [Manuel Padilla](https://www.plugdigital.com/manuel-padilla)
 
 == Screenshots ==
 
-1. MP Customize Login Page example #1
-2. MP Customize Login Page example #2
-3. Dashboard General settings
+1. Plugin options

@@ -2,9 +2,9 @@
 /**
  * Plugin Name: MP Customize Login Page
  * Description: Customize your wp-login page
- * Plugin URI: https://www.plugdigital.com/wp-plugins/mp-customize-login-page
+ * Plugin URI: https://www.plugdigital.net/wp-plugins/mp-customize-login-page
  * Author: Manuel Padilla
- * Author URI: https://www.plugdigital.com/manuel-padilla
+ * Author URI: https://www.plugdigital.net/manuel-padilla
  * Version: 1.0
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
