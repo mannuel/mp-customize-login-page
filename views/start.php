@@ -55,7 +55,7 @@
 
 				<div class="mp-card-action">
 					<div class="mp-card-content">
-						<a href="https://goo.gl/BsnMiH" target="_blank" title="MP Customize login Page git repo" class="mp-orange-text">Bitbucket Repo</a>
+						<a href="https://github.com/mannuel/mp-customize-login-page" target="_blank" title="MP Customize login Page git repo" class="mp-orange-text">GitHub Repo</a>
 						<a href="https://goo.gl/Rd8Gev" target="_blank" title="Manuel Padilla LikedIn" class="mp-orange-text">LinkedIn</a>
 					</div>
 				</div><!-- /.mp-card-action -->

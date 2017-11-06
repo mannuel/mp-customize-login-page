@@ -26,7 +26,7 @@ Customize your wordpress login page to make it looks different, yo can change th
 
 = Bugs or technical hints =
 
-Please give us feedback, contribute and file technical bugs on [Bitbucket Repo](https://goo.gl/BsnMiH).
+Please give us feedback, contribute and file technical bugs on [GitHub Repo](https://github.com/mannuel/mp-customize-login-page).
 
 = Credits =
 
