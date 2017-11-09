@@ -1,0 +1,37 @@
+/*
+ * plugdigital.net
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+.mpclp-content{font-family: 'Roboto Condensed', sans-serif}
+
+#login-image-current{ background-repeat: no-repeat; background-size: contain; height: 150px; margin-bottom: 1.5em; width: 100% }
+
+label{font-size: 1rem}
+
+nav.main{height: inherit; padding: 1rem 0}
+nav.main .row {width: 90%; margin: 0 auto}
+nav.main img{width: 25%}
+
+.button-danger{ background-color: #d9534f !important; border-color: #d43f3a !important; color: #fff !important}
+.about-plugin li{ font-size: 1.4em }
+.mp-card{
+	background: #fff;max-width: 100%;
+	border-radius: 2px;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+    margin-bottom: 1.5rem
+}
+
+.mp-orange-text{color: #d4603a}
+
+.mp-card .mp-card-title{border-bottom: 1px solid #eee; font-size: 14px; font-weight: 700; line-height: 1.4; margin-bottom: 1em; padding: 8px 12px; }
+.mp-card .mp-card-title h3{margin: 0; padding: 0}
+.mp-card .mp-card-content{padding: 8px 12px}
+.mp-card .mp-card-action{border-top: 1px solid rgba(160,160,160,0.2)}
+.mp-card .mp-card-action .mp-card-content{padding: 15px 12px}
+.mp-card .mp-card-action a{margin-right: 1rem; text-transform: uppercase; text-decoration: none}
+
+.text-center{text-align: center !important}
+.text-uppercase{text-transform: uppercase !important}
