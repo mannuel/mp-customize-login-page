@@ -25,6 +25,30 @@ jQuery(document).ready( function($) {
 		mediaUploader.open();
 	});
 
+	$('#upload-background-image-button').on('click',function(e){
+		e.preventDefault();
+		if (mediaUploader) {
+			mediaUploader.open();
+			return;
+		}
+
+		mediaUploader = wp.media.frames.file_frame = wp.media({
+			title: 'Choose a background image',
+			button: {
+				text: 'Choose a background'
+			},
+			multiple: false
+		});
+
+		mediaUploader.on('select', function(){
+			attachment = mediaUploader.state().get('selection').first().toJSON();
+			$('#mpclp-background').val(attachment.url);
+			$('#background-image-current').css('background-image','url(' + attachment.url + ')');
+		});
+
+		mediaUploader.open();
+	});
+
 	$('.wpColorPicker').wpColorPicker();
 
 	$('#reset-options').on('click',function(e){

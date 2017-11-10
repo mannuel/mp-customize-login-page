@@ -4,7 +4,8 @@
 * Author: Manuel Padilla manuel@plugdigital.net
 */
 class mpclp {
-	const NONCE = 'mpclp';
+	const NONCE   = 'mpclp';
+	const NONCEBG = 'mpclp_bg';
 
 	private static $initiated = false;
 
@@ -15,6 +16,10 @@ class mpclp {
 		// DELETE Login Image?
 		if ( isset( $_POST['action'] ) && $_POST['action'] == 'delete-mpclp-login-image' ) {
 			self::delete_mpclp_login_image();
+		}
+		// DELETE Background Image?
+		if ( isset( $_POST['action'] ) && $_POST['action'] == 'delete-mpclp-background-image' ) {
+			self::delete_mpclp_background_image();
 		}
 		if ( ! self::$initiated ) {
 			self::init_hooks();
@@ -103,6 +108,9 @@ class mpclp {
 		update_option( 'mpclp_login_image_link', esc_url_raw($_POST['mpclp-login-image-link']) );
 		update_option( 'mpclp_login_image_height', sanitize_text_field($_POST['mpclp-login-image-height']) );
 		update_option( 'mpclp_login_background', sanitize_text_field($_POST['mpclp-login-background']) );
+		update_option( 'mpclp_background', esc_url_raw($_POST['mpclp-background']) );
+		update_option( 'mpclp_background_repeat', sanitize_text_field($_POST['mpclp-background-repeat']) );
+		update_option( 'mpclp_background_size', sanitize_text_field($_POST['mpclp-background-size']) );
 		update_option( 'mpclp_login_form_background', sanitize_text_field($_POST['mpclp-login-form-background']) );
 		update_option( 'mpclp_login_form_label', sanitize_text_field($_POST['mpclp-login-form-label']) );
 		update_option( 'mpclp_login_message', sanitize_text_field( htmlentities($_POST['mpclp-login-message'])) );
@@ -115,16 +123,36 @@ class mpclp {
 	public static function delete_mpclp_login_image() {
 		if ( !wp_verify_nonce( $_POST['_wpnonce'], self::NONCE ) )
 			return false;
+
 		delete_option( 'mpclp_login_image' );
+		return true;
+	}
+
+	/**
+	 * DELETE Background image DB Save
+	 */
+	public static function delete_mpclp_background_image() {
+		if ( !wp_verify_nonce( $_POST['_wpnonce'], self::NONCEBG ) )
+			return false;
+
+		delete_option( 'mpclp_background' );
 		return true;
 	}
 
 	/**
 	 * Add custom login options
 	 */
-	public static function mpclp_login_image_form() { ?>
+	public static function mpclp_login_image_form() {
+		if (get_option( 'mpclp_background' )) {
+			$page_background = "url('". get_option( 'mpclp_background' ) . "') " . get_option( 'mpclp_background_repeat' ) . "; background-size:" . get_option( 'mpclp_background_size' ) . ";";
+		}elseif (get_option( 'mpclp_login_background' )) {
+			$page_background = get_option( 'mpclp_login_background' );
+		}
+	?>
 		<style type="text/css">
-			body{background: <?php echo get_option( 'mpclp_login_background' ); ?>}
+			<?php if($page_background){ ?>
+				body{background: <?php echo $page_background; ?>}
+			<?php } ?>
 			<?php if( get_option( 'mpclp_login_image' ) ) { ?>
 				.login h1 a{ background-image: none,url(<?php echo get_option( 'mpclp_login_image' ); ?>); background-repeat: no-repeat; background-size: contain; width: 100%}
 			<?php } ?>
@@ -175,7 +203,10 @@ class mpclp {
 		add_settings_field( 'mpclp-login-image', 'Logo image', array( 'mpclp', 'mpclp_opt_logo_image'), 'MP Customize Login Page', 'mpclp_opstions_section', '' );
 		add_settings_field( 'mpclp-login-image-link', 'Logo link', array( 'mpclp', 'mpclp_opt_login_image_link'), 'MP Customize Login Page', 'mpclp_opstions_section', '' );
 		add_settings_field( 'mpclp-login-image-height', 'Login image height', array( 'mpclp', 'mpclp_opt_login_image_height'), 'MP Customize Login Page', 'mpclp_opstions_section', '' );
-		add_settings_field( 'mpclp-login-form-background', 'Page background', array( 'mpclp', 'mpclp_opt_page_background'), 'MP Customize Login Page', 'mpclp_opstions_section', '' );
+		add_settings_field( 'mpclp-background', 'Background image', array( 'mpclp', 'mpclp_background'), 'MP Customize Login Page', 'mpclp_opstions_section', '' );
+		add_settings_field( 'mpclp-background-repeat', 'Background image repeat', array( 'mpclp', 'mpclp_background_repeat'), 'MP Customize Login Page', 'mpclp_opstions_section', '' );
+		add_settings_field( 'mpclp-background-size', 'Background image size', array( 'mpclp', 'mpclp_background_size'), 'MP Customize Login Page', 'mpclp_opstions_section', '' );
+		add_settings_field( 'mpclp-login-form-background', 'Background color', array( 'mpclp', 'mpclp_opt_page_background'), 'MP Customize Login Page', 'mpclp_opstions_section', '' );
 
 		add_settings_field( 'mpclp-login-form-background', 'Form background', array( 'mpclp', 'mpclp_login_form_background'), 'MP Customize Form Login Page', 'mpclp_opstions_form_section', '' );
 		add_settings_field( 'mpclp-login-form-label', 'Form label color', array( 'mpclp', 'mpclp_login_form_label'), 'MP Customize Form Login Page', 'mpclp_opstions_form_section', '' );
@@ -183,7 +214,7 @@ class mpclp {
 	}
 
 	public static function mpclp_opstions_fields(){
-		echo "Test";
+		echo "";
 	}
 
 	public static function mpclp_opstions_form_fields(){
@@ -204,6 +235,34 @@ class mpclp {
 	public static function mpclp_opt_login_image_height( ){
 		$mpclp_login_image_height = esc_attr( get_option( 'mpclp_login_image_height' ) );
 		echo '<input type="text" id="mpclp-login-image-height" name="mpclp-login-image-height" value="'.$mpclp_login_image_height.'" placeholder="100px">';
+	}
+
+	public static function mpclp_background( ){
+		$mpclp_background = esc_attr( get_option( 'mpclp_background' ) );
+		echo '<input type="hidden" name="mpclp-background" id="mpclp-background" value="'.$mpclp_background.'">';
+		echo '<input type="button" value="Set background image" id="upload-background-image-button" class="button">';
+		echo '<p class="description">Recommended: 1366x768 pixels</p>';
+	}
+
+	public static function mpclp_background_repeat( ){
+		$mpclp_background_repeat = esc_attr( get_option( 'mpclp_background_repeat' ) );
+		?>
+		<select name="mpclp-background-repeat" id="mpclp-background-repeat">
+			<option value="no-repeat" <?php selected($mpclp_background_repeat, "no-repeat"); ?>>no-repeat</option>
+			<option value="repeat-x" <?php selected($mpclp_background_repeat, "repeat-x"); ?>>repeat-x</option>
+			<option value="repeat-y" <?php selected($mpclp_background_repeat, "repeat-y"); ?>>repeat-y</option>
+		</select>
+		<?php
+	}
+
+	public static function mpclp_background_size( ){
+		$mpclp_background_size = esc_attr( get_option( 'mpclp_background_size' ) );
+		?>
+		<select name="mpclp-background-size" id="mpclp-background-size">
+			<option value="cover" <?php selected($mpclp_background_size, "cover"); ?>>cover</option>
+			<option value="contain" <?php selected($mpclp_background_size, "contain"); ?>>contain</option>
+		</select>
+		<?php
 	}
 
 	public static function mpclp_opt_page_background( ){

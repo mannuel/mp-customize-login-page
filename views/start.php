@@ -37,6 +37,29 @@
 				</div><!-- /.mp-card -->
 			<?php endif; ?>
 
+			<?php if (get_option( 'mpclp_background' )): ?>
+				<div class="mp-card">
+					<div class="mp-card-title">
+						<h3><?php _e( 'Current background image', 'mp_clp' ); ?></h3>
+					</div><!-- /.mp-card-title -->
+
+					<div class="mp-card-content">
+						<div id="background-image-current" style="background-image: url(<?php echo get_option( 'mpclp_background' ); ?>); height: 100px; background-size: cover"></div>
+
+						<form action="" method="post">
+							<?php wp_nonce_field( mpclp::NONCEBG ) ?>
+							<input type="hidden" name="action" value="delete-mpclp-background-image">
+							<input type="submit" class="button button-link" value="<?php _e( 'Remove background image', 'mp_clp' ); ?>" id="delete-background-image-button">
+						</form>
+
+						<ul>
+							<li><b>background-repeat</b>: <?php echo get_option( 'mpclp_background_repeat' ) ?></li>
+							<li><b>background-size</b>: <?php echo get_option( 'mpclp_background_size' ) ?></li>
+						</ul>
+					</div><!-- /.mp-card-content -->
+				</div><!-- /.mp-card -->
+			<?php endif; ?>
+
 			<div class="mp-card">
 				<div class="mp-card-title">
 					<h3><?php _e( 'About this Plugin', 'mp_clp' );?></h3>
