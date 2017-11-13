@@ -114,6 +114,8 @@ class mpclp {
 		update_option( 'mpclp_login_form_background', sanitize_text_field($_POST['mpclp-login-form-background']) );
 		update_option( 'mpclp_login_form_label', sanitize_text_field($_POST['mpclp-login-form-label']) );
 		update_option( 'mpclp_login_message', sanitize_text_field( htmlentities($_POST['mpclp-login-message'])) );
+		update_option( 'mpclp_login_btn_background', sanitize_text_field($_POST['mpclp-login-btn-background']) );
+		update_option( 'mpclp_login_btn_background_hover', sanitize_text_field($_POST['mpclp-login-btn-background-hover']) );
 		return true;
 	}
 
@@ -210,6 +212,8 @@ class mpclp {
 
 		add_settings_field( 'mpclp-login-form-background', 'Form background', array( 'mpclp', 'mpclp_login_form_background'), 'MP Customize Form Login Page', 'mpclp_opstions_form_section', '' );
 		add_settings_field( 'mpclp-login-form-label', 'Form label color', array( 'mpclp', 'mpclp_login_form_label'), 'MP Customize Form Login Page', 'mpclp_opstions_form_section', '' );
+		add_settings_field( 'mpclp-login-btn-background', 'Button background', array( 'mpclp', 'mpclp_login_btn_background'), 'MP Customize Form Login Page', 'mpclp_opstions_form_section', '' );
+		add_settings_field( 'mpclp-login-btn-background-hover', 'Button background hover', array( 'mpclp', 'mpclp_login_btn_background_hover'), 'MP Customize Form Login Page', 'mpclp_opstions_form_section', '' );
 		add_settings_field( 'mpclp-login-message', 'Message', array( 'mpclp', 'mpclp_login_message'), 'MP Customize Form Login Page', 'mpclp_opstions_form_section', '' );
 	}
 
@@ -273,6 +277,16 @@ class mpclp {
 	public static function mpclp_login_form_background( ){
 		$mpclp_login_form_background = esc_attr( get_option( 'mpclp_login_form_background' ) );
 		echo '<input type="text" id="mpclp-login-form-background" class="wpColorPicker" name="mpclp-login-form-background" value="'.$mpclp_login_form_background.'">';
+	}
+
+	public static function mpclp_login_btn_background( ){
+		$mpclp_login_btn_background = esc_attr( get_option( 'mpclp_login_btn_background' ) );
+		echo '<input type="text" id="mpclp-login-btn-background" class="wpColorPicker" name="mpclp-login-btn-background" value="'.$mpclp_login_btn_background.'">';
+	}
+
+	public static function mpclp_login_btn_background_hover( ){
+		$mpclp_login_btn_background_hover = esc_attr( get_option( 'mpclp_login_btn_background_hover' ) );
+		echo '<input type="text" id="mpclp-login-btn-background-hover" class="wpColorPicker" name="mpclp-login-btn-background-hover" value="'.$mpclp_login_btn_background_hover.'">';
 	}
 
 	public static function mpclp_login_form_label( ){
