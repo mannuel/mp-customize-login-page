@@ -145,6 +145,7 @@ class mpclp {
 	 * Add custom login options
 	 */
 	public static function mpclp_login_image_form() {
+		$page_background = "";
 		if (get_option( 'mpclp_background' )) {
 			$page_background = "url('". get_option( 'mpclp_background' ) . "') " . get_option( 'mpclp_background_repeat' ) . "; background-size:" . get_option( 'mpclp_background_size' ) . ";";
 		}elseif (get_option( 'mpclp_login_background' )) {
@@ -155,14 +156,35 @@ class mpclp {
 			<?php if($page_background){ ?>
 				body{background: <?php echo $page_background; ?>}
 			<?php } ?>
+
 			<?php if( get_option( 'mpclp_login_image' ) ) { ?>
 				.login h1 a{ background-image: none,url(<?php echo get_option( 'mpclp_login_image' ); ?>); background-repeat: no-repeat; background-size: contain; width: 100%}
 			<?php } ?>
+
 			<?php if( get_option( 'mpclp_login_image_height' ) ) { ?>
 				.login h1 a{ height: <?php echo get_option( 'mpclp_login_image_height' ); ?> }
 			<?php } ?>
-			.login form{background: <?php echo get_option( 'mpclp_login_form_background' ); ?>}
-			.login label{color: <?php echo get_option( 'mpclp_login_form_label' ); ?>}
+
+			<?php if ( get_option( 'mpclp_login_btn_background' ) ): ?>
+				input#wp-submit{background: <?php echo get_option( 'mpclp_login_btn_background' ); ?> !important}
+			<?php endif ?>
+
+			<?php if ( get_option( 'mpclp_login_btn_background_hover' ) ): ?>
+				input#wp-submit:hover{background: <?php echo get_option( 'mpclp_login_btn_background_hover' ); ?> !important}
+				input#wp-submit{
+					border-color: <?php echo get_option( 'mpclp_login_btn_background_hover' ); ?>;
+					text-shadow: 0 -1px 1px <?php echo get_option( 'mpclp_login_btn_background_hover' ); ?>;
+					box-shadow: 0 1px 0 <?php echo get_option( 'mpclp_login_btn_background_hover' ); ?>;
+				}
+			<?php endif ?>
+
+			<?php if ( get_option( 'mpclp_login_form_background' ) ): ?>
+				.login form{background: <?php echo get_option( 'mpclp_login_form_background' ); ?>}
+			<?php endif ?>
+
+			<?php if ( get_option( 'mpclp_login_form_label' ) ): ?>
+				.login label{color: <?php echo get_option( 'mpclp_login_form_label' ); ?>}
+			<?php endif ?>
 		</style>
 	<?php }
 

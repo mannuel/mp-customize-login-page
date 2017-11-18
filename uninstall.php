@@ -15,3 +15,5 @@ delete_option( 'mpclp_login_background' );
 delete_option( 'mpclp_login_form_background' );
 delete_option( 'mpclp_login_form_label' );
 delete_option( 'mpclp_login_message' );
+delete_option( 'mpclp_login_btn_background' );
+delete_option( 'mpclp_login_btn_background_hover' );
