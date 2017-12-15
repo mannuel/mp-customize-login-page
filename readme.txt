@@ -6,7 +6,7 @@ Author: Manuel Padilla
 Author URI: https://www.plugdigital.net/manuel-padilla
 Tags: custom login, login customization, login page
 Requires at least: 3.5
-Tested up to: 4.8.2
+Tested up to: 4.9
 License: GPL-2.0+
 
 Customize your wordpress login page, change logo image, colors and more
