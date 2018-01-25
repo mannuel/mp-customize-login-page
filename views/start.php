@@ -4,6 +4,7 @@
 	<div class="row">
 		<div class="col-md-8">
 			<form action="" method="post" id="mpclp_frm">
+				<input type="hidden" name="mpclp-options" value="update">
 
 				<?php wp_nonce_field() ?>
 				

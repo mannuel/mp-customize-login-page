@@ -10,7 +10,7 @@ class mpclp {
 	private static $initiated = false;
 
 	public static function init() {
-		if ( isset( $_POST['action'] ) && $_POST['action'] == 'update' ) {
+		if ( isset( $_POST['mpclp-options'] ) && $_POST['mpclp-options'] == 'update' ) {
 			self::enter_mpclp_login_options();
 		}
 		// DELETE Login Image?
